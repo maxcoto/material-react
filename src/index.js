@@ -4,10 +4,9 @@ import { Provider } from 'react-redux'
 import HttpsRedirect from 'react-https-redirect'
 import { Router } from "react-router-dom";
 import store, { history } from './redux/store'
-import sentry from "library/raven/sentry"
+import "library/raven/sentry"
 
 import App from './App'
-import Admin from "layouts/Admin.js";
 import "assets/css/material-dashboard-react.css?v=1.9.0";
 
 

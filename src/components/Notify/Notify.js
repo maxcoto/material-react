@@ -36,7 +36,7 @@ class Notify extends React.Component {
   }
 
   render() {
-    const { message, type } = this.props
+    const { text, type } = this.props
     const { display } = this.state
 
     const color = type === "error" ? "danger" : "success"
@@ -49,7 +49,7 @@ class Notify extends React.Component {
         place="br"
         color={color}
         icon={icon}
-        message={message}
+        message={text}
         open={display}
         closeNotification={() => this.hide()}
         close
@@ -59,8 +59,10 @@ class Notify extends React.Component {
 }
 
 Notify.propTypes = {
-  type: PropTypes.oneOf(["error", "success"]),
-  message: PropTypes.string
+  type: PropTypes.oneOf(["error", "success", ""]),
+  text: PropTypes.string,
+  open: PropTypes.bool,
+  onClose: PropTypes.func
 };
 
 export default Notify;

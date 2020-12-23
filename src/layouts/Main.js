@@ -96,7 +96,7 @@ class Main extends React.Component {
         <Notify
           open={message.open}
           type={message.type}
-          message={message.content}
+          text={message.text}
           onClose={this.props.setMessage}
         />
   
