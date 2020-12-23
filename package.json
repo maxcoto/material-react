@@ -1,6 +1,6 @@
 {
-  "name": "material-dashboard-react",
-  "version": "1.9.0",
+  "name": "RTM",
+  "version": "0.0.1",
   "description": "React App Template",
   "private": false,
   "main": "dist/index.js",
@@ -15,13 +15,17 @@
     "react": "16.13.1",
     "react-chartist": "0.14.3",
     "react-dom": "16.13.1",
-    "react-google-maps": "9.4.5",
-    "react-router-dom": "5.2.0",
+    "react-swipeable-views": "0.13.9",
     "react-scripts": "3.4.1",
-    "react-swipeable-views": "0.13.9"
+    "react-https-redirect": "^1.1.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "5.2.0",
+    "react-router-redux": "^4.0.8",
+    "react-router-with-props": "^0.1.3",
+    "redux": "^4.0.0"
   },
   "scripts": {
-    "start": "PORT=3001 react-scripts start",
+    "start": "HTTPS=true PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
@@ -39,7 +43,6 @@
   "author": "Maxi <maxiperezc@gmail.com> (https://www.maxiperezcode.com/)",
   "license": "MIT",
   "optionalDependencies": {
-    "@types/googlemaps": "3.39.6",
     "@types/markerclustererplus": "2.1.33",
     "ajv": "6.12.2",
     "typescript": "3.9.3"

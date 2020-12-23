@@ -2,10 +2,13 @@
 import Dashboard from "@material-ui/icons/Dashboard";
 import Person from "@material-ui/icons/Person";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-// core components/views for Admin layout
+//{{expand}}
+
+// views
 import DashboardPage from "views/Dashboard/Dashboard.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
 import StudentList from "views/Students/StudentList.js";
+//{{expand}}
 
 const routes = [
   {
@@ -36,7 +39,8 @@ const routes = [
     component: UserProfile,
     layout: "/admin",
     bottom: true
-  }
+  },
+  //{{expand}}
 ];
 
 export default routes;

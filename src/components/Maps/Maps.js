@@ -1,3 +1,6 @@
+// npm install "react-google-maps": "9.4.5",
+// optional deps @types/googlemaps": "3.39.6",
+
 import React from "react";
 import {
   withScriptjs,

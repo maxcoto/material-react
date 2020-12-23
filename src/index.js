@@ -1,20 +1,35 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createBrowserHistory } from "history";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { Provider } from 'react-redux'
+import HttpsRedirect from 'react-https-redirect'
+import { Router } from "react-router-dom";
+import store, { history } from './redux/store'
+import sentry from "library/raven/sentry"
 
-// core components
+import App from './App'
 import Admin from "layouts/Admin.js";
 import "assets/css/material-dashboard-react.css?v=1.9.0";
 
-const hist = createBrowserHistory();
 
-ReactDOM.render(
-  <Router history={hist}>
-    <Switch>
-      <Route path="/admin" component={Admin} />
-      <Redirect from="/" to="/admin/dashboard" />
-    </Switch>
-  </Router>,
-  document.getElementById("root")
+// import registerServiceWorker from './registerServiceWorker'
+
+ReactDOM.render(  
+  <Provider store={store}>
+    <HttpsRedirect>
+      <Router history={history}>
+        <App />
+      </Router>
+    </HttpsRedirect>
+  </Provider>,
+  document.getElementById('root')
 );
+
+
+// if(process.env.NODE_ENV !== 'production') { registerServiceWorker() }
+
+// <Switch>
+//   <Route path="/admin" component={Admin} />
+//   <Redirect from="/" to="/admin/dashboard" />
+// </Switch>
+
+

@@ -16,7 +16,7 @@ import routes from "routes.js";
 import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 
 import bgImage from "assets/img/sidebar.jpg";
-import logo from "assets/img/reactlogo.png";
+import logo from "assets/img/logo.png";
 
 let ps;
 
@@ -98,11 +98,6 @@ export default function Admin({ ...rest }) {
         </div>
         <Footer />
       </div>
-
-      <Notify
-        type="success"
-        message="This is the success message"
-      />
     </div>
   );
 }
