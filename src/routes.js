@@ -1,16 +1,11 @@
 // @material-ui/icons
 import Dashboard from "@material-ui/icons/Dashboard";
 import Person from "@material-ui/icons/Person";
-import LibraryBooks from "@material-ui/icons/LibraryBooks";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import Notifications from "@material-ui/icons/Notifications";
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
 import StudentList from "views/Students/StudentList.js";
-import Typography from "views/Typography/Typography.js";
-import NotificationsPage from "views/Notifications/Notifications.js";
-import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro.js";
 
 const routes = [
   {
@@ -35,24 +30,10 @@ const routes = [
     layout: "/admin"
   },
   {
-    path: "/typography",
-    name: "Typography",
-    icon: LibraryBooks,
-    component: Typography,
-    layout: "/admin"
-  },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    icon: Notifications,
-    component: NotificationsPage,
-    layout: "/admin"
-  },
-  {
-    path: "/upgrade-to-pro",
+    path: "/user",
     name: "Profile",
     icon: AccountCircle,
-    component: UpgradeToPro,
+    component: UserProfile,
     layout: "/admin",
     bottom: true
   }
