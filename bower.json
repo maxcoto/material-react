@@ -2,7 +2,7 @@
   "name": "material-react",
   "homepage": "",
   "authors": ["maxi perez coto"],
-  "description": "A ReactJS app with material design template",
+  "description": "{{MRT}}",
   "main": "public/index.html",
   "keywords": [],
   "license": "MIT",

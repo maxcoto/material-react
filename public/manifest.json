@@ -1,6 +1,6 @@
 {
-  "short_name": "RMT",
-  "name": "React Material Template",
+  "short_name": "{{RMT}}",
+  "name": "{{RMT}}",
   "icons": [
     {
       "src": "favicon.ico",
