@@ -16,28 +16,28 @@ const routes = [
     name: "Dashboard",
     icon: Dashboard,
     component: DashboardPage,
-    layout: "/admin"
+    layout: ""
   },
   {
     path: "/user",
     name: "User Profile",
     icon: Person,
     component: UserProfile,
-    layout: "/admin"
+    layout: ""
   },
   {
     path: "/students",
     name: "Students",
     icon: Person,
     component: StudentList,
-    layout: "/admin"
+    layout: ""
   },
   {
     path: "/user",
     name: "Profile",
     icon: AccountCircle,
     component: UserProfile,
-    layout: "/admin",
+    layout: "",
     bottom: true
   },
   //{{expand}}

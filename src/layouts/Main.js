@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // routes 
-import { Switch, Redirect } from 'react-router-dom'
-import { PropsRoute } from 'react-router-with-props'
+import { Route, Switch, Redirect } from 'react-router'
 import routes from "routes.js";
 
 // API
@@ -79,6 +78,8 @@ class Main extends React.Component {
 
     //if(!this.props.user.id) return <Auth {...this.props} />
 
+    console.log(rest);
+
     return (
       <div className={classes.wrapper}>
         <Sidebar
@@ -111,13 +112,11 @@ class Main extends React.Component {
               
               <Switch>
                 {routes.map((prop, key) => {
+                  const Component = prop.component
                   return (
-                    <PropsRoute 
-                      path={prop.path} 
-                      component={prop.component} 
-                      key={key}
-                      {...rest}
-                    />
+                    <Route path={prop.layout + prop.path} key={key}>
+                      <Component {...rest} />
+                    </Route>
                   )
                 })}
                 <Redirect from="/" to="/dashboard" />

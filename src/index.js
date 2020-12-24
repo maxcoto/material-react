@@ -1,34 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from 'react-redux'
 import HttpsRedirect from 'react-https-redirect'
-import { Router } from "react-router-dom";
+
+import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'connected-react-router'
 import store, { history } from './redux/store'
+
 import "library/raven/sentry"
 
 import App from './App'
 import "assets/css/material-dashboard-react.css?v=1.9.0";
 
 
-// import registerServiceWorker from './registerServiceWorker'
-
-ReactDOM.render(  
+ReactDOM.render(
   <Provider store={store}>
     <HttpsRedirect>
-      <Router history={history}>
+      <ConnectedRouter history={history}>
         <App />
-      </Router>
+      </ConnectedRouter>
     </HttpsRedirect>
   </Provider>,
   document.getElementById('root')
-);
+)
 
 
+// import registerServiceWorker from './registerServiceWorker'
 // if(process.env.NODE_ENV !== 'production') { registerServiceWorker() }
-
-// <Switch>
-//   <Route path="/admin" component={Admin} />
-//   <Redirect from="/" to="/admin/dashboard" />
-// </Switch>
-
-

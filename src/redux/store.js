@@ -1,19 +1,21 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-import createHistory from 'history/createBrowserHistory'
-import { routerMiddleware } from 'react-router-redux'
-import rootReducer from './reducers/index'
+import { createBrowserHistory } from 'history'
+import { applyMiddleware, compose, createStore } from 'redux'
+import { routerMiddleware } from 'connected-react-router'
+import createRootReducer from './reducers/index'
 import defaultState from './state'
 
-const history = createHistory()
-const middleware = routerMiddleware(history)
+const history = createBrowserHistory()
 
 const store = createStore(
-  rootReducer,
+  createRootReducer(history), // root reducer with router state
   defaultState,
   compose(
-    applyMiddleware(middleware),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
-  )
+    applyMiddleware(
+      routerMiddleware(history), // for dispatching history actions
+      // ... other middlewares ...
+    ),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  ),
 )
 
 export { history }

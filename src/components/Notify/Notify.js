@@ -17,13 +17,16 @@ class Notify extends React.Component {
   
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
-      this.show();
+      if( this.props.open === true ){
+        this.show();
+      }
     }
   }
   
   hide(){
     if(this.state.display === true){
       this.setState({ display: false })
+      this.props.onClose({ open: false })
     }
   }
   

@@ -55,8 +55,14 @@ class StudentList extends React.Component {
     API.configure(props.token)
     API.all(
       'students',
-      function(data){ this.setState({ students: data }) }.bind(this),
-      function(error){ console.log(error); }
+      function(data){
+        this.setState({ students: data })
+        this.props.setMessage({ open: true, text: "Students loaded !!", type: "success" })
+      }.bind(this),
+      function(error){
+        console.log(error)
+        this.props.setMessage({ open: true, text: "Students not loaded :(", type: "error" })
+      }.bind(this)
     )
   }
   
