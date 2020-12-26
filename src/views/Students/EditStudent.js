@@ -66,14 +66,14 @@ class EditStudent extends React.Component {
   onClick(){
     API.update('/students/', this.state.student.id, this.state, this.onSuccess, this.onFailure)
   }
-
-  // onChange(name, value){
-  //   this.setState({ student: {...this.state.student, [name]: value } });
-  // }
   
   onChange(event){
     const { name, value } = event.target
     this.setState({ student: {...this.state.student, [name]: value } });
+  }
+  
+  show(student){
+    this.props.history.push('/students/' + student.id, { student });
   }
 
   render() {
@@ -82,45 +82,46 @@ class EditStudent extends React.Component {
     if(!student) return null
  
     return(
-      <React.Fragment>
-        <GridContainer>
-          <GridItem xs={12} sm={12} md={8}>
-            <Card>
-              <CardHeader color="primary">
-                <h4 className={classes.cardTitleWhite}>Edit Student {student.id}</h4>
-                <p className={classes.cardCategoryWhite}>what should go here ?</p>
-              </CardHeader>
+      <GridContainer>
+        <GridItem xs={12} sm={12} md={8}>
+          <Card>
+            <CardHeader color="primary">
+              <h4 className={classes.cardTitleWhite}>Edit Student {student.id}</h4>
+              <p className={classes.cardCategoryWhite}>what should go here ?</p>
+            </CardHeader>
 
-              <StudentsForm student={student} onChange={this.onChange} />
+            <StudentsForm student={student} onChange={this.onChange} />
 
-              <CardFooter>
-                <Button color="primary" onClick={this.onClick}>Update</Button>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={12} md={4}>
-            <Card profile>
-              <CardAvatar profile>
-                <a href="#pablo" onClick={e => e.preventDefault()}>
-                  <img src={avatar} alt="..." />
-                </a>
-              </CardAvatar>
-              <CardBody profile>
-                <h6 className={classes.cardCategory}>CEO / CO-FOUNDER</h6>
-                <h4 className={classes.cardTitle}>Alec Thompson</h4>
-                <p className={classes.description}>
-                  Don{"'"}t be scared of the truth because we need to restart the
-                  human foundation in truth And I love you like Kanye loves Kanye
-                  I love Rick Owens’ bed design but the back is...
-                </p>
-                <Button color="primary" round>
-                  Follow
-                </Button>
-              </CardBody>
-            </Card>
-          </GridItem>
-        </GridContainer>
-      </React.Fragment>
+            <CardFooter>
+              <Button color="primary" onClick={this.onClick}>Update</Button>
+            </CardFooter>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={4}>
+          <Card profile>
+            <CardAvatar profile>
+              <a href="#pablo" onClick={e => e.preventDefault()}>
+                <img src={avatar} alt="..." />
+              </a>
+            </CardAvatar>
+            <CardBody profile>
+              <h6 className={classes.cardCategory}>{student.id}</h6>
+              <h4 className={classes.cardTitle}>{student.first_name + " " + student.last_name}</h4>
+              <h4 className={classes.cardTitle}>{student.email}</h4>
+              <h4 className={classes.cardTitle}>{student.phone}</h4>
+              <h4 className={classes.cardTitle}>{student.contact_method}</h4>
+              <h4 className={classes.cardTitle}>{student.lead_source}</h4>
+              <h4 className={classes.cardTitle}>{student.level.name}</h4>
+              <h4 className={classes.cardTitle}>{student.status}</h4>
+              <p className={classes.description}>Objectives: {student.objectives}</p>
+              <p className={classes.description}>Notes: {student.notes}</p>
+              <Button color="primary" round onClick={this.show.bind(this, student)} >
+                Show
+              </Button>
+            </CardBody>
+          </Card>
+        </GridItem>
+      </GridContainer>
     )
   }
 }

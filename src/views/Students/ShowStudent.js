@@ -2,8 +2,20 @@ import React from 'react'
 import API from '../../library/API'
 import Button from "components/CustomButtons/Button.js";
 import { defaultStudent } from 'variables/general.js'
+import { withStyles } from "@material-ui/core/styles";
 
-export default class ShowStudent extends React.Component {  
+import GridItem from "components/Grid/GridItem.js";
+import GridContainer from "components/Grid/GridContainer.js";
+import Card from "components/Card/Card.js";
+import CardHeader from "components/Card/CardHeader.js";
+import CardAvatar from "components/Card/CardAvatar.js";
+import CardBody from "components/Card/CardBody.js";
+
+import avatar from "assets/img/faces/marc.jpg";
+
+const styles = {};
+
+class ShowStudent extends React.Component {  
   constructor(props) {
     super(props)
 
@@ -14,35 +26,39 @@ export default class ShowStudent extends React.Component {
     const { id } = this.state.student
     this.props.history.push('/students/' + id + '/edit', this.state);
   }
-  
+
   render() {
+    const { classes } = this.props
     const { student } = this.state
-    return(
-      <React.Fragment>
-        <h2>Student #{student.id}</h2>
-        <div className="container">
-          <div>First Name: {student.first_name}</div>
-          <div>Last Name: {student.last_name}</div>
-          <div>Email: {student.email}</div>
-          <div>Phone: {student.phone}</div>
-          <div>Contact Method: {student.contact_method}</div>
-          <div>Lead Source: {student.lead_source}</div>
-          <div>Objectives: {student.objectives}</div>
-          <div>Notes: {student.notes}</div>
-          <div>Level: {student.level.name}</div>
-          <div>Status: {student.status}</div>
-        </div>
-        
-        <Button
-          justIcon={window.innerWidth > 959}
-          simple={!(window.innerWidth > 959)}
-          aria-label="IDK"
-          onClick={this.onClick.bind(this)}
-        >
-          Edit
-        </Button>
-      </React.Fragment>
+    return (
+      <GridContainer>
+        <GridItem xs={12} sm={12} md={6}>
+          <Card profile>
+            <CardAvatar profile>
+              <a href="#pablo" onClick={e => e.preventDefault()}>
+                <img src={avatar} alt="..." />
+              </a>
+            </CardAvatar>
+            <CardBody profile>
+              <h6 className={classes.cardCategory}>{student.id}</h6>
+              <h4 className={classes.cardTitle}>{student.first_name + " " + student.last_name}</h4>
+              <h4 className={classes.cardTitle}>{student.email}</h4>
+              <h4 className={classes.cardTitle}>{student.phone}</h4>
+              <h4 className={classes.cardTitle}>{student.contact_method}</h4>
+              <h4 className={classes.cardTitle}>{student.lead_source}</h4>
+              <h4 className={classes.cardTitle}>{student.level.name}</h4>
+              <h4 className={classes.cardTitle}>{student.status}</h4>
+              <p className={classes.description}>Objectives: {student.objectives}</p>
+              <p className={classes.description}>Notes: {student.notes}</p>
+              <Button color="primary" round onClick={this.onClick.bind(this)} >
+                Edit
+              </Button>
+            </CardBody>
+          </Card>
+        </GridItem>
+      </GridContainer>
     )
   }
 }
 
+export default withStyles(styles, { withTheme: true })(ShowStudent);
