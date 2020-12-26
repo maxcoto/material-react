@@ -5,99 +5,164 @@ import InputLabel from "@material-ui/core/InputLabel";
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
+import CustomSelect from "components/CustomSelect/CustomSelect.js";
+
 import Button from "components/CustomButtons/Button.js";
+import CardBody from "components/Card/CardBody.js";
 
 import { statuses, levels, leadSources, contactMethods } from 'variables/general'
+
 
 export default class StudentForm extends React.Component {
   render() {
     const { student, onChange } = this.props
     if(!student) return null
  
+   console.log("chloe:", student);
+ 
     return(
-      <React.Fragment>
-        <div className="container">
-          <CustomInput
-            labelText="First Name"
-            formControlProps={{ fullWidth: true }}
-            inputProps={{ onChange }}
-          />
-        </div>
-      </React.Fragment>
+      <CardBody>
+        <GridContainer>
+          <GridItem xs={12} sm={12} md={4}>
+            <CustomInput
+              labelText="First Name"
+              id="first_name"
+              formControlProps={{ fullWidth: true }}
+              inputProps={{
+                onChange,
+                value: student.first_name,
+                name: "first_name"
+              }}
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <CustomInput
+              labelText="Last Name"
+              id="last_name"
+              formControlProps={{ fullWidth: true }}
+              inputProps={{
+                onChange,
+                name: "last_name",
+                value: student.last_name
+              }}
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <CustomInput
+              labelText="Email"
+              id="email"
+              formControlProps={{ fullWidth: true }}
+              inputProps={{
+                onChange,
+                name: "email",
+                value: student.email
+              }}
+            />
+          </GridItem>
+        </GridContainer>
+        <GridContainer>
+          <GridItem xs={12} sm={12} md={4}>
+            <CustomInput
+              labelText="Phone"
+              id="phone"
+              formControlProps={{ fullWidth: true }}
+              inputProps={{
+                onChange,
+                value: student.phone,
+                name: "phone"
+              }}
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <CustomSelect
+              labelText="Contact Method"
+              id="contact_method"
+              formControlProps={{ fullWidth: true }}
+              values={ contactMethods }
+              onChange={onChange}
+              inputProps={{
+                name: "contact_method",
+                value: student.contact_method
+              }}
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <CustomSelect
+              labelText="Lead Source"
+              id="lead_source"
+              formControlProps={{ fullWidth: true }}
+              values={ leadSources }
+              onChange={onChange}
+              inputProps={{
+                name: "lead_source",
+                value: student.lead_source
+              }}
+            />
+          </GridItem>
+        </GridContainer>
+        <GridContainer>
+          <GridItem xs={12} sm={12} md={4}>
+            <CustomSelect
+              labelText="Level"
+              id="level"
+              formControlProps={{ fullWidth: true }}
+              values={ levels }
+              onChange={onChange}
+              inputProps={{
+                name: "level",
+                value: student.level
+              }}
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <CustomSelect
+              labelText="Status"
+              id="status"
+              formControlProps={{ fullWidth: true }}
+              values={ statuses }
+              onChange={onChange}
+              inputProps={{
+                name: "status",
+                value: student.status
+              }}
+            />
+          </GridItem>
+        </GridContainer>
+        <GridContainer>
+          <GridItem xs={12} sm={12} md={12}>
+            <CustomInput
+              labelText="Objectives"
+              id="objectives"
+              formControlProps={{ fullWidth: true }}
+              inputProps={{
+                onChange,
+                multiline: true,
+                rows: 5,
+                name: "objectives",
+                value: student.objectives || ""
+              }}
+            />
+          </GridItem>
+        </GridContainer>
+        <GridContainer>
+          <GridItem xs={12} sm={12} md={12}>
+            <CustomInput
+              labelText="Notes"
+              id="notes"
+              formControlProps={{ fullWidth: true }}
+              inputProps={{
+                onChange,
+                multiline: true,
+                rows: 5,
+                name: "notes",
+                value: student.notes || ""
+              }}
+            />
+          </GridItem>
+        </GridContainer>
+      </CardBody>
     )
   }
 }
 
-// 
-// <GenInput
-//   label="Last Name"
-//   value={student.last_name}
-//   type="text"
-//   name="last_name"
-//   onChange={onChange}
-// />
-// 
-// <GenInput
-//   label="Email"
-//   value={student.email}
-//   type="text"
-//   name="email"
-//   onChange={onChange}
-// />
-// 
-// <GenInput
-//   label="Phone Number"
-//   value={student.phone}
-//   type="text"
-//   name="phone"
-//   onChange={onChange}
-// />
-// 
-// <GenSelect
-//   label="Contact Method"
-//   value={ student.contact_method }
-//   values={ contactMethods }
-//   name="contact_method"
-//   onChange={ onChange }
-// />
-// 
-// <GenSelect
-//   label="Lead Source"
-//   value={ student.lead_source }
-//   values={ leadSources }
-//   name="lead_source"
-//   onChange={ onChange }
-// />
-// 
-// <GenText
-//   label="Objectives"
-//   value={student.objectives}
-//   type="text"
-//   name="objectives"
-//   onChange={onChange}
-// />
-// 
-// <GenText
-//   label="Notes"
-//   value={student.notes}
-//   type="text"
-//   name="notes"
-//   onChange={onChange}
-// />
-// 
-// <GenSelect
-//   label="Level"
-//   value={student.level}
-//   values={ levels }
-//   name="level"
-//   onChange={onChange}
-// />
-// 
-// <GenSelect
-//   label="Status"
-//   value={student.status}
-//   values={ statuses }
-//   name="status"
-//   onChange={onChange}
-// />
 
