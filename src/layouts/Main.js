@@ -78,8 +78,6 @@ class Main extends React.Component {
 
     //if(!this.props.user.id) return <Auth {...this.props} />
 
-    console.log(rest);
-
     return (
       <div className={classes.wrapper}>
         <Sidebar

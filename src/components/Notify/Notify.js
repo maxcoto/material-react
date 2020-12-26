@@ -45,7 +45,7 @@ class Notify extends React.Component {
     const color = type === "error" ? "danger" : "success"
     const icon = type === "error" ? ErrorIcon : SuccessIcon
 
-    console.log(display);
+    //console.log(display);
 
     return (
       <Snackbar
