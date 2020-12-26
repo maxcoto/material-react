@@ -1,13 +1,10 @@
 import React from 'react'
-import API from '../../library/API'
 import Button from "components/CustomButtons/Button.js";
-import { defaultStudent } from 'variables/general.js'
 import { withStyles } from "@material-ui/core/styles";
 
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
 import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 

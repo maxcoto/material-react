@@ -7,10 +7,11 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 // views
 import DashboardPage from "views/Dashboard/Dashboard.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
-import StudentList from "views/Students/StudentList.js";
-import ShowStudent from "views/Students/ShowStudent.js";
+
+import NewStudent  from "views/Students/NewStudent.js";
 import EditStudent from "views/Students/EditStudent.js";
-import NewStudent from "views/Students/NewStudent.js";
+import ShowStudent from "views/Students/ShowStudent.js";
+import StudentList from "views/Students/StudentList.js";
 //{{expand}}
 
 const routes = [
@@ -21,24 +22,9 @@ const routes = [
     component: DashboardPage,
     layout: ""
   },
-  {
-    path: "/students/new",
-    component: NewStudent,
-    layout: "",
-    hidden: true
-  },
-  {
-    path: "/students/:id/edit",
-    component: EditStudent,
-    layout: "",
-    hidden: true
-  },
-  {
-    path: "/students/:id",
-    component: ShowStudent,
-    layout: "",
-    hidden: true
-  },
+  { path: "/students/new",      component: NewStudent,  layout: "", hidden: true },
+  { path: "/students/:id/edit", component: EditStudent, layout: "", hidden: true },
+  { path: "/students/:id",      component: ShowStudent, layout: "", hidden: true },
   {
     path: "/students",
     name: "Students",

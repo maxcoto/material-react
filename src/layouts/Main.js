@@ -6,17 +6,18 @@ import { Route, Switch, Redirect } from 'react-router'
 import routes from "routes.js";
 
 // API
-import API from 'library/API'
+// import API from 'library/API'
+// import Auth from './Auth.js'
+
 // scrollbar
 import PerfectScrollbar from 'perfect-scrollbar'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 
 // core components
-import Navbar from "components/Navbars/Navbar.js";
 import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 import Notify from "components/Notify/Notify.js";
-import Auth from './Auth.js'
+
 
 //styles
 import { withStyles } from '@material-ui/core/styles'

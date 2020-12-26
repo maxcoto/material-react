@@ -1,23 +1,21 @@
 import React from "react";
 import API from '../../library/API'
 
-// @material-ui/core components
-import { withStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
+import StudentForm from './StudentForm.js'
 
+import { withStyles } from "@material-ui/core/styles";
 import avatar from "assets/img/faces/marc.jpg";
 
-import StudentsForm from './StudentsForm.js'
+
 
 const styles = {
   cardCategoryWhite: {
@@ -90,7 +88,7 @@ class EditStudent extends React.Component {
               <p className={classes.cardCategoryWhite}>what should go here ?</p>
             </CardHeader>
 
-            <StudentsForm student={student} onChange={this.onChange} />
+            <StudentForm student={student} onChange={this.onChange} />
 
             <CardFooter>
               <Button color="primary" onClick={this.onClick}>Update</Button>

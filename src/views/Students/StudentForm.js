@@ -1,13 +1,10 @@
 import React from 'react'
 
-import InputLabel from "@material-ui/core/InputLabel";
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import CustomSelect from "components/CustomSelect/CustomSelect.js";
-
-import Button from "components/CustomButtons/Button.js";
 import CardBody from "components/Card/CardBody.js";
 
 import { statuses, levels, leadSources, contactMethods } from 'variables/general'
@@ -110,7 +107,7 @@ export default class StudentForm extends React.Component {
               onChange={onChange}
               inputProps={{
                 name: "level",
-                value: student.level
+                value: student.level.name
               }}
             />
           </GridItem>
