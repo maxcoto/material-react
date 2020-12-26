@@ -59,20 +59,6 @@ class Main extends React.Component {
     window.removeEventListener('resize', this.resizeFunction)
   }
 
-  componentDidUpdate(e) {
-    const self = this
-
-    //if(!e.user.id && this.props.user.id)
-      //API.get('students', self.props.user.accessToken, (response) => { self.props.setTournaments(response) })
-
-    // {{WTF}}
-    // if (e.history.location.pathname !== e.location.pathname) {
-    //   const container = document.getElementById('mainPanel')
-    //   container.scrollTop = 0
-    //   if (this.state.mobileOpen) this.setState({ mobileOpen: false })
-    // }
-  }
-
   render() {
     const { classes, message, ...rest } = this.props
 
@@ -100,11 +86,6 @@ class Main extends React.Component {
         />
   
         <div className={classes.mainPanel} ref={this.mainPanel}>
-          <Navbar
-            routes={routes}
-            handleDrawerToggle={this.toggleMobile}
-            {...rest}
-          />
           <div className={classes.content}>
             <div className={classes.container}>
               

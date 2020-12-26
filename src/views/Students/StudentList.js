@@ -13,6 +13,7 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 
 import Link from '@material-ui/core/Link';
 
+import AddIcon from "@material-ui/icons/Add";
 import ShowIcon from "@material-ui/icons/Visibility";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -85,6 +86,10 @@ class StudentList extends React.Component {
     this.setState({ ...this.state, students: list })
   }
   
+  new(){
+    this.props.history.push('/students/new');
+  }
+  
   show(student){
     this.props.history.push('/students/' + student.id, { student });
   }
@@ -113,6 +118,9 @@ class StudentList extends React.Component {
                 <p className={classes.cardCategoryWhite}>All</p>
               </div>
               <div style={{ float: "right" }}>
+                <Button color="warning" aria-label="add" justIcon round onClick={ this.new.bind(this)} >
+                  <AddIcon />
+                </Button>
                 <CustomInput
                   labelText="Search"
                   inputProps={{ onChange: this.search.bind(this) }}

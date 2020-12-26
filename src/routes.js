@@ -10,6 +10,7 @@ import UserProfile from "views/UserProfile/UserProfile.js";
 import StudentList from "views/Students/StudentList.js";
 import ShowStudent from "views/Students/ShowStudent.js";
 import EditStudent from "views/Students/EditStudent.js";
+import NewStudent from "views/Students/NewStudent.js";
 //{{expand}}
 
 const routes = [
@@ -21,17 +22,19 @@ const routes = [
     layout: ""
   },
   {
+    path: "/students/new",
+    component: NewStudent,
+    layout: "",
+    hidden: true
+  },
+  {
     path: "/students/:id/edit",
-    name: "Students Edit",
-    icon: Person,
     component: EditStudent,
     layout: "",
     hidden: true
   },
   {
     path: "/students/:id",
-    name: "Students Show",
-    icon: Person,
     component: ShowStudent,
     layout: "",
     hidden: true

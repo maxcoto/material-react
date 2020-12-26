@@ -50,7 +50,7 @@ class ShowStudent extends React.Component {
               <h4 className={classes.cardTitle}>{student.status}</h4>
               <p className={classes.description}>Objectives: {student.objectives}</p>
               <p className={classes.description}>Notes: {student.notes}</p>
-              <Button color="primary" round onClick={this.onClick.bind(this)} >
+              <Button color="primary" onClick={this.onClick.bind(this)} >
                 Edit
               </Button>
             </CardBody>
