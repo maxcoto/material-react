@@ -8,6 +8,8 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import DashboardPage from "views/Dashboard/Dashboard.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
 import StudentList from "views/Students/StudentList.js";
+import ShowStudent from "views/Students/ShowStudent.js";
+import EditStudent from "views/Students/EditStudent.js";
 //{{expand}}
 
 const routes = [
@@ -19,11 +21,20 @@ const routes = [
     layout: ""
   },
   {
-    path: "/user",
-    name: "User Profile",
+    path: "/students/:id/edit",
+    name: "Students Edit",
     icon: Person,
-    component: UserProfile,
-    layout: ""
+    component: EditStudent,
+    layout: "",
+    hidden: true
+  },
+  {
+    path: "/students/:id",
+    name: "Students Show",
+    icon: Person,
+    component: ShowStudent,
+    layout: "",
+    hidden: true
   },
   {
     path: "/students",

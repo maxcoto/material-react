@@ -28,6 +28,7 @@ export default function Sidebar(props) {
   var links = (
     <List className={classes.list}>
       {routes.map((prop, key) => {
+        if(prop.hidden) return null;
         var lastItem = " ";
         var listItemClasses;
         if (prop.bottom === true) {

@@ -1,7 +1,7 @@
 import React from 'react'
 import API from '../../library/API'
-import GenButton from '../utils/form/GenButton'
-import { defaultStudent } from '../utils/constants'
+import Button from "components/CustomButtons/Button.js";
+import { defaultStudent } from 'variables/general.js'
 
 export default class ShowStudent extends React.Component {  
   constructor(props) {
@@ -29,11 +29,18 @@ export default class ShowStudent extends React.Component {
           <div>Lead Source: {student.lead_source}</div>
           <div>Objectives: {student.objectives}</div>
           <div>Notes: {student.notes}</div>
-          <div>Level: {student.level}</div>
+          <div>Level: {student.level.name}</div>
           <div>Status: {student.status}</div>
         </div>
         
-        <GenButton iconLeft="fa-edit" label="Edit" onClick={this.onClick.bind(this)} />
+        <Button
+          justIcon={window.innerWidth > 959}
+          simple={!(window.innerWidth > 959)}
+          aria-label="IDK"
+          onClick={this.onClick.bind(this)}
+        >
+          Edit
+        </Button>
       </React.Fragment>
     )
   }

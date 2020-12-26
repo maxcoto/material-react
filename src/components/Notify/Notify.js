@@ -26,7 +26,7 @@ class Notify extends React.Component {
   hide(){
     if(this.state.display === true){
       this.setState({ display: false })
-      this.props.onClose({ open: false })
+      this.props.onClose({ open: false, text: "" })
     }
   }
   
