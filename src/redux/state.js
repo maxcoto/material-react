@@ -4,7 +4,9 @@ const state = {
     type: "",
     text: "",
     open: false
-  }
+  },
+  //{{add_state}}
 }
+
 
 export default state

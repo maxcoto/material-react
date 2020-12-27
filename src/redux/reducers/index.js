@@ -4,13 +4,13 @@ import { connectRouter } from 'connected-react-router'
 import user from './user'
 import message from './message'
 import students from './students'
-//{{expand}}
+// [+add_import+]
  
 const rootReducer = (history) => combineReducers({
   router: connectRouter(history),
   user,
   message,
   students,
-  //{{expand}}
+  //[+add_reducer+]
 })
 export default rootReducer

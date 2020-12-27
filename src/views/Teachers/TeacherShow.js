@@ -9,25 +9,25 @@ import GridContainer from "components/Grid/GridContainer.js";
 import Card from "components/Card/Card.js";
 import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
-import StudentFields from './StudentFields.js'
+import TeacherFields from './TeacherFields.js'
 
 import avatar from "assets/img/faces/marc.jpg";
 
 const styles = {};
 
-class ShowStudent extends React.Component {  
+class TeacherShow extends React.Component {  
   constructor(props) {
     super(props)
 
-    this.state = this.props.location.state || { student: null }
+    this.state = this.props.location.state || { teacher: null }
 
     API.configure(props.token)
   
-    if(!this.state.student){
+    if(!this.state.teacher){
       const id = this.props.location.pathname.split("/")[2]
-      API.get('students', id,
+      API.get('teachers', id,
         function(response){
-          this.setState({ student: response })
+          this.setState({ teacher: response })
         }.bind(this),
         function(error){
           this.props.notifyError(error)
@@ -37,14 +37,14 @@ class ShowStudent extends React.Component {
   }
 
   onClick(){
-    const { id } = this.state.student
-    this.props.history.push('/students/' + id + '/edit', this.state);
+    const { id } = this.state.teacher
+    this.props.history.push('/teachers/' + id + '/edit', this.state);
   }
 
   render() {
     const { classes } = this.props
-    const { student } = this.state
-    if(!student) return null
+    const { teacher } = this.state
+    if(!teacher) return null
     
     return (
       <GridContainer>
@@ -56,7 +56,7 @@ class ShowStudent extends React.Component {
               </a>
             </CardAvatar>
             <CardBody profile>
-              <StudentFields student={student} />
+              <TeacherFields teacher={teacher} />
               <Button color="primary" onClick={this.onClick.bind(this)} >
                 Edit
               </Button>
@@ -68,4 +68,4 @@ class ShowStudent extends React.Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(ShowStudent);
+export default withStyles(styles, { withTheme: true })(TeacherShow);

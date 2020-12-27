@@ -60,6 +60,11 @@ const statuses = [
   { id: "inactive", name: "inactive" }
 ]
 
+const _status = [
+  { id: "active", name: "active" },
+  { id: "inactive", name: "inactive" }
+]
+
 const defaultStudent = {
   first_name: "",
   last_name: "",
@@ -73,6 +78,15 @@ const defaultStudent = {
   status: ""
 }
 
+// default teacher export
+const defaultTeacher = {
+first_name: '',
+last_name: '',
+email: '',
+status: '',
+}
+//[+add_default+]
+
 module.exports = {
   // these 3 are used to create the tasks lists in TasksCard - Dashboard view
   bugs,
@@ -81,6 +95,9 @@ module.exports = {
   contactMethods,
   leadSources,
   levels,
+  _status,
   statuses,
-  defaultStudent
+  defaultStudent,
+  defaultTeacher,
+//[+export_default+]
 };
