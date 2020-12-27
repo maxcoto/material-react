@@ -11,6 +11,7 @@ import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 import StudentForm from './StudentForm.js'
+import StudentFields from './StudentFields.js'
 
 import { withStyles } from "@material-ui/core/styles";
 import { defaultStudent } from 'variables/general'
@@ -94,16 +95,7 @@ class NewStudent extends React.Component {
               </a>
             </CardAvatar>
             <CardBody profile>
-              <h6 className={classes.cardCategory}>{student.id}</h6>
-              <h4 className={classes.cardTitle}>{student.first_name + " " + student.last_name}</h4>
-              <h4 className={classes.cardTitle}>{student.email}</h4>
-              <h4 className={classes.cardTitle}>{student.phone}</h4>
-              <h4 className={classes.cardTitle}>{student.contact_method}</h4>
-              <h4 className={classes.cardTitle}>{student.lead_source}</h4>
-              <h4 className={classes.cardTitle}>{student.level}</h4>
-              <h4 className={classes.cardTitle}>{student.status}</h4>
-              <p className={classes.description}>Objectives: {student.objectives}</p>
-              <p className={classes.description}>Notes: {student.notes}</p>
+              <StudentFields student={student} />
             </CardBody>
           </Card>
         </GridItem>
