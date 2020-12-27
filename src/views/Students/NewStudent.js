@@ -47,11 +47,12 @@ class NewStudent extends React.Component {
 
   onSuccess(response){
     const { id } = response
-    this.props.history.push('/students/' + id, { id });
+    this.props.history.push('/students/' + id, { student: response} );
+    this.props.notifySuccess("Student created succesfully")
   }
   
   onFailure(error){
-    console.log(error);
+    this.props.notifyError(error)
   }
   
   onClick(){
@@ -73,7 +74,7 @@ class NewStudent extends React.Component {
         <GridItem xs={12} sm={12} md={8}>
           <Card>
             <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>New Student!</h4>
+              <h4 className={classes.cardTitleWhite}>New Student</h4>
             </CardHeader>
 
             <StudentForm student={student} onChange={this.onChange} />
@@ -99,7 +100,7 @@ class NewStudent extends React.Component {
               <h4 className={classes.cardTitle}>{student.phone}</h4>
               <h4 className={classes.cardTitle}>{student.contact_method}</h4>
               <h4 className={classes.cardTitle}>{student.lead_source}</h4>
-              <h4 className={classes.cardTitle}>{student.level.name}</h4>
+              <h4 className={classes.cardTitle}>{student.level}</h4>
               <h4 className={classes.cardTitle}>{student.status}</h4>
               <p className={classes.description}>Objectives: {student.objectives}</p>
               <p className={classes.description}>Notes: {student.notes}</p>

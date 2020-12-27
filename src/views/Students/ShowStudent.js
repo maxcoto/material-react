@@ -1,4 +1,6 @@
 import React from 'react'
+import API from '../../library/API'
+
 import Button from "components/CustomButtons/Button.js";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -16,7 +18,25 @@ class ShowStudent extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = this.props.location.state || { student: props.student }
+    this.state = this.props.location.state || { student: null }
+
+    API.configure(props.token)
+  
+    if(!this.state.student){
+      const id = this.props.location.pathname.split("/")[2]
+      API.get('students', id,
+        function(response){
+          this.setState({ student: response })
+        }.bind(this),
+        function(error){
+          this.props.notifyError(error)
+        }.bind(this)
+      )
+    }
+  }
+  
+  componentDidMount(newProps){
+    console.log("this:", this.props.computedMatch);
   }
 
   onClick(){
@@ -27,6 +47,8 @@ class ShowStudent extends React.Component {
   render() {
     const { classes } = this.props
     const { student } = this.state
+    if(!student) return null
+    
     return (
       <GridContainer>
         <GridItem xs={12} sm={12} md={6}>
@@ -43,7 +65,7 @@ class ShowStudent extends React.Component {
               <h4 className={classes.cardTitle}>{student.phone}</h4>
               <h4 className={classes.cardTitle}>{student.contact_method}</h4>
               <h4 className={classes.cardTitle}>{student.lead_source}</h4>
-              <h4 className={classes.cardTitle}>{student.level.name}</h4>
+              <h4 className={classes.cardTitle}>{student.level}</h4>
               <h4 className={classes.cardTitle}>{student.status}</h4>
               <p className={classes.description}>Objectives: {student.objectives}</p>
               <p className={classes.description}>Notes: {student.notes}</p>

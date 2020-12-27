@@ -59,11 +59,11 @@ class StudentList extends React.Component {
       'students',
       function(data){
         this.setState({ students: data, all: data })
-        this.props.setMessage({ open: true, text: "Students loaded !!", type: "success" })
+        this.props.notifySuccess("Students loaded !!")
       }.bind(this),
       function(error){
         console.log(error)
-        this.props.setMessage({ open: true, text: "Students not loaded :(", type: "error" })
+        this.props.notifyError("Students not loaded :( => " + error)
       }.bind(this)
     )
   }
@@ -97,9 +97,17 @@ class StudentList extends React.Component {
   }
   
   delete(student){
-    API.delete('/students/' + student.id, function(result){
-      console.log(result);
-    })
+    const self = this
+    API.delete(
+      'students',
+      student.id,
+      function(result){
+        self.props.notifySuccess("Student has been deleted succesfully")
+      },
+      function(error){
+        console.log(error);
+      }
+    )
   }
 
   render() {
@@ -115,10 +123,8 @@ class StudentList extends React.Component {
                 <h4 className={classes.cardTitleWhite}>Students</h4>
                 <p className={classes.cardCategoryWhite}>All</p>
               </div>
+              
               <div style={{ float: "right" }}>
-                <Button color="warning" aria-label="add" justIcon round onClick={ this.new.bind(this)} >
-                  <AddIcon />
-                </Button>
                 <CustomInput
                   labelText="Search"
                   inputProps={{ onChange: this.search.bind(this) }}
@@ -127,6 +133,9 @@ class StudentList extends React.Component {
               </div>
             </CardHeader>
             <CardBody>
+              <Button color="warning" aria-label="add" justIcon round onClick={ this.new.bind(this)} >
+                <AddIcon />
+              </Button>
               <Table
                 tableHeaderColor="primary"
                 tableHead={["Name", "Email", "Phone", "Level", "Status", "Active", "Actions"]}
@@ -136,7 +145,7 @@ class StudentList extends React.Component {
                       student.first_name + " " + student.last_name,
                       student.email,
                       student.phone,
-                      student.level.name,
+                      student.level,
                       student.status,
                       student.active.toString(),
                       <div>

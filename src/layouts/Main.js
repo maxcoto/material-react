@@ -25,6 +25,7 @@ import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 import image from "assets/img/sidebar.jpg";
 import logo from "assets/img/logo.png";
 
+
 let perfectScroll;
 
 class Main extends React.Component {
@@ -61,7 +62,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const { classes, message, ...rest } = this.props
+    const { classes, message, closeNotify, ...rest } = this.props
 
     //if(!this.props.user.id) return <Auth {...this.props} />
 
@@ -83,7 +84,7 @@ class Main extends React.Component {
           open={message.open}
           type={message.type}
           text={message.text}
-          onClose={this.props.setMessage}
+          onClose={closeNotify}
         />
   
         <div className={classes.mainPanel} ref={this.mainPanel}>

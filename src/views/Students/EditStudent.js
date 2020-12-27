@@ -41,15 +41,27 @@ class EditStudent extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = this.props.location.state || { student: props.student }
-
     this.onSuccess = this.onSuccess.bind(this)
     this.onFailure = this.onFailure.bind(this)
 
     this.onClick = this.onClick.bind(this)
     this.onChange = this.onChange.bind(this)
 
+    this.state = this.props.location.state || { student: null }
+
     API.configure(props.token)
+  
+    if(!this.state.student){
+      const id = this.props.location.pathname.split("/")[2]
+      API.get('students', id,
+        function(response){
+          this.setState({ student: response })
+        }.bind(this),
+        function(error){
+          this.props.notifyError(error)
+        }.bind(this)
+      )
+    }
   }
 
   onSuccess(response){
@@ -62,7 +74,7 @@ class EditStudent extends React.Component {
   }
   
   onClick(){
-    API.update('/students/', this.state.student.id, this.state, this.onSuccess, this.onFailure)
+    API.update('students', this.state.student.id, this.state, this.onSuccess, this.onFailure)
   }
   
   onChange(event){
@@ -109,11 +121,11 @@ class EditStudent extends React.Component {
               <h4 className={classes.cardTitle}>{student.phone}</h4>
               <h4 className={classes.cardTitle}>{student.contact_method}</h4>
               <h4 className={classes.cardTitle}>{student.lead_source}</h4>
-              <h4 className={classes.cardTitle}>{student.level.name}</h4>
+              <h4 className={classes.cardTitle}>{student.level}</h4>
               <h4 className={classes.cardTitle}>{student.status}</h4>
               <p className={classes.description}>Objectives: {student.objectives}</p>
               <p className={classes.description}>Notes: {student.notes}</p>
-              <Button color="primary" round onClick={this.show.bind(this, student)} >
+              <Button color="primary" onClick={this.show.bind(this, student)} >
                 Show
               </Button>
             </CardBody>

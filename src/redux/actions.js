@@ -1,2 +1,5 @@
 export const setUser = user => { return { type: 'SET_USER', user } }
-export const setMessage = message => { return { type: 'SET_MESSAGE', message } }
+
+export const notifySuccess = message => { return { type: 'NOTIFY_SUCCESS', message } }
+export const notifyError   = message => { return { type: 'NOTIFY_ERROR',   message } }
+export const closeNotify = ()        => { return { type: 'NOTIFY_CLOSE' } }

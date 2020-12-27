@@ -15,8 +15,6 @@ export default class StudentForm extends React.Component {
     const { student, onChange } = this.props
     if(!student) return null
  
-   console.log("chloe:", student);
- 
     return(
       <CardBody>
         <GridContainer>
@@ -107,7 +105,7 @@ export default class StudentForm extends React.Component {
               onChange={onChange}
               inputProps={{
                 name: "level",
-                value: student.level.name
+                value: student.level
               }}
             />
           </GridItem>
