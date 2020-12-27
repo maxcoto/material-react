@@ -103,6 +103,7 @@ class StudentList extends React.Component {
       student.id,
       function(result){
         self.props.notifySuccess("Student has been deleted succesfully")
+        window.location.reload()
       },
       function(error){
         console.log(error);
